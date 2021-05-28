@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - gitStarredRepos-app',
-    title: 'gitStarredRepos-app',
+    titleTemplate: '%s',
+    title: 'Github Most Starred Repos App',
     htmlAttrs: {
       lang: 'en'
     },
@@ -40,6 +40,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
