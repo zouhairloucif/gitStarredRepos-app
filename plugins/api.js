@@ -4,7 +4,6 @@ class Api {
   }
 
   buildRequestParams(url, params, operator) {
-    console.log(params);
     let endPoint = url + '?q=';
     let index = 0;
     Object.keys(params).map((key) => {
@@ -21,7 +20,7 @@ class Api {
     return endPoint;
   }
 
-  get(endPoint, params) {
+  request(endPoint, params) {
     return this.axios.$get(this.buildRequestParams(endPoint, params));
   }
 }

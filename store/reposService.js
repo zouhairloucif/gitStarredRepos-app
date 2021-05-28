@@ -19,12 +19,10 @@ export const mutations = {
 export const actions = {
   async getStarredRepos({commit}, params) {
     return new Promise((resolve, reject) => {
-      this.$api.get(searchRepos, params)
+      this.$api.request(searchRepos, params)
         .then((response) => {
-          console.log(response);
           let data = [];
-          response.items.map((elm) => {
-            const {name, description, owner: {avatar_url, login}, stargazers_count, open_issues_count, created_at, svn_url} = elm;
+          response.items.map(({name, description, owner: {avatar_url, login}, stargazers_count, open_issues_count, created_at, svn_url}) => {
             const owner = new Owner(avatar_url, login);
             const repo = new Repo(owner, name, description, stargazers_count, open_issues_count, created_at, svn_url);
             data.push(repo);

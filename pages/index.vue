@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-container>
       <v-row>
         <v-col cols="12">
           <template v-if="isLoading">
@@ -11,44 +10,23 @@
           <template v-else>
             <v-list three-line>
               <template v-for="(item, index) in getStarredReposList">
-                <div :key="index">
-                  <v-list-item :href="item.url" target="_blank">
-                    <v-list-item-avatar size="110px">
-                      <v-img :src="item.owner.avatar"></v-img>
-                    </v-list-item-avatar>
-
-                    <v-list-item-content>
-                      <v-list-item-title v-html="item.name"></v-list-item-title>
-                      <v-list-item-subtitle v-html="item.description"></v-list-item-subtitle>
-                      <v-list-item-group>
-                        <v-item-group>
-                          <v-item>
-                            <span>Stars: {{item.stars | numberFormatter}}</span>
-                          </v-item>
-                          <v-item>
-                            <span>Issues: {{item.issues | numberFormatter}}</span>
-                          </v-item>
-                          <v-item>
-                            <span>Submitted {{$moment(item.created_at).fromNow() }} by {{item.owner.name}}</span>
-                          </v-item>
-                        </v-item-group>
-                      </v-list-item-group>
-                    </v-list-item-content>
-                  </v-list-item>
-                </div>
+                <repo-item :key="index" :item="item"></repo-item>
               </template>
             </v-list>
           </template>
         </v-col>
       </v-row>
-    </v-container>
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import repoItem from "@/components/repoItem";
 
 export default {
+  components: {
+    repoItem,
+  },
   data() {
     return {
       isLoading: false,
@@ -81,7 +59,7 @@ export default {
         })
     }
   },
-  created() {
+  mounted() {
     this.getReposFromApi();
   }
 }
