@@ -12,7 +12,11 @@ export const getters = {
 
 export const mutations = {
   GET_STARRED_REPOS_LIST(state, data) {
-    state.starredReposList = state.starredReposList.concat(data);
+    if(state.starredReposList.length) {
+      state.starredReposList = state.starredReposList.concat(data);
+    } else {
+      state.starredReposList = data;
+    }
   }
 }
 
