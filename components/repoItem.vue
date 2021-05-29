@@ -10,13 +10,13 @@
         <v-list-item-subtitle v-if="item.description" v-html="item.description"></v-list-item-subtitle>
         <v-list-item-group>
           <v-chip-group>
-            <v-chip color="primary--lighten-1" label outlined>
+            <v-chip color="info" label outlined>
               Stars: {{item.stars | numberFormatter}}
             </v-chip>
-            <v-chip outlined>
+            <v-chip color="info" label outlined>
               Issues: {{item.issues | numberFormatter}}
             </v-chip>
-            <v-chip outlined>
+            <v-chip color="transparent" label>
               Submitted {{$moment(item.created_at).fromNow() }} by {{item.owner.name}}
             </v-chip>
           </v-chip-group>
