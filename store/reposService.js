@@ -4,7 +4,7 @@ import {Owner} from "@/models/owner";
 
 export const namespaced = true;
 export const state = () => ({
-  starredReposList: null,
+  starredReposList: [],
 })
 export const getters = {
   getStarredReposList: state => state.starredReposList,
@@ -12,7 +12,7 @@ export const getters = {
 
 export const mutations = {
   GET_STARRED_REPOS_LIST(state, data) {
-    state.starredReposList = data;
+    state.starredReposList = state.starredReposList.concat(data);
   }
 }
 
